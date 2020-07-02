@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>galeria</title>
+    <link href="../CSS/Estilo.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header></header>
+    <nav></nav>
+    <section>
+
+        <div class="myslides">
+            <img src="../img/ashe.jpg" width="100%">
+        </div>
+        <div class="myslides">
+            <img src="../img/Champion-List.jpg" width="100%">
+
+        </div>
+        <div class="myslides">
+            <img src="../img/ekko-true-damage.jpg" width="100%">
+        </div>
+
+        <button class="prev" onclick="plusSlides(-1)"><<<button>
+        <button class="next" onclick="plusSlides(1)">>></button>
+
+        <div class="row">
+            <div class="column">
+                <img class="demo cursor" src="../img/ashe.jpg" style="width: 100%;" onclick="currentSlide(1)">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="../img/Champion-List.jpg" style="width: 100%;" onclick="currentSlide(2)">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="../img/ekko-true-damage.jpg" style="width: 100%;" onclick="currentSlide(3)">
+            </div>
+        </div>
+
+    </section>
+    <footer></footer>
+    <script>
+        var slidesIndex = 1;
+        showsSlides(slidesIndex);
+
+        function plusSlides(n) {
+            showsSlides(slidesIndex += n);
+        }
+
+        function currentSlide(n) {
+            showsSlides(slidesIndex = n)
+        }
+
+        function showsSlides(n) {
+            var i
+            var slides = document.getElementsByClassName("myslides");
+            var dots = document.getElementsByClassName("demo")
+            if (n > slides.length) {
+                slidesIndex = 1
+            }
+            if (n < 1) {
+                slidesIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none"
+            }
+            for (i = 0; i < slides.length; i++) {
+                dots[i].className = dots[i].className.replace("active", "")
+            }
+            slides[slidesIndex - 1].style.display = "block"
+            dots[slidesIndex - 1].className += "active"
+        }
+    </script>
+
+</body>
+
+</html>
